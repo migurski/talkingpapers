@@ -2,8 +2,12 @@
 robert k 
 chris b
 
-"rasumussen can talk for 2 hours with a 5 second echo on skype"
-goal: getting people to act.
+"eric rasumussen can talk for 2 hours with a 5 second echo on skype. incredible." :)
+
+ ===================
+ = WHO IS IT FOR?  =
+ ===================
+
 UN humanitarian community: clusters, eg, nutritioncluster healthcluster secutirycluster ...
 Different organizations have different responsibilities and based on what they known from reports on the ground they will do an assessment -- a form -- 
 
@@ -20,54 +24,20 @@ Essentially looking at needs and loking at it to proporitize different types of 
 - All are driven by technology. 
 - Information is the oxygen of all of these opeations
 - that's why mobile tools have exploded. 
-- 
-
-Revision 1
- 3 coders
-
-Revision 10
  
-
-
-so information is treated with equal priority. 
-
-
-
-WHO IS IT FOR? 
 
 Logistics officer: needs to get things from point a to point be in the maximum way (balance of supplies, saftey.)
 - what are the supply needs. 
 - what kinds of routes are open
 - is sombody gonna kill us if we go to the well?
 
-
 field assessment team
-
-
 logistics team
-
-
-
 katrina was a total clusterfuck
 
-
-
-
-
-WE HAVE
-
-areial imagery 
-
-
-
-CONDITIONS TO NOTE
-
-comms is down: radio only
-
-
-
-RELIEF ORG
-
+ ==============
+ = RELIEF ORG =
+ ==============
 
 Food for the Hungry
 10 international staff
@@ -85,7 +55,6 @@ Stuff and vehicles for stuff and roads for vehicles. its really tough when every
 setiing up a camp. 
 
 aftershocks
-
 
  ====================
  = THE CAMP MANAGER =
@@ -107,53 +76,24 @@ rations
 # who is missing
 # where are people going to go
 
-
 in pakistan: does your land even exist? are you scared to go back? why? 
-
-
-
 all of the UN groups ask: 
-
 do you have pregnant women? do you have any minors. 
-
 Some of the data will vary a lot more than the others. 
-
-
-
-
 among relief worker staff
-
-
-
-
-
 # data collection tasks
 registering everyone
-
-
-
-
 designing for people in some circumstances
-
-
 people are creating forms
-
-
 Where are the metrics being taken from: potentially far away from the scene (increasingly close though). By a week after the event we can consider using the tool for much deeper studies. 
-
-
 What you typically find is that the information you need is constanly 
-
 
 "you are not changing any of my schemas."
 
+"incident command system form" (spooky voice)
+like a  SITREP
 
-
-incident command system form
-SITREP
-
-Some of the questions have chang
-
+Some of the questions have change.
 
 you are collecting something and the metadata is constantly evolving. 
 
@@ -167,13 +107,9 @@ THEY DONT TRUST ANYBODY ELSE TO GET IT RIGHT.
 
 WE NEED PAPER NOT TO BE SOMETHING THAT JUST PILES UP AND IS SO prone to errors in transcriptions. 
 
-People who aren't even half fluent
-
+People who aren't even half fluent.
 
 XML was created in 1996 we recognized it literslly contains everyting that a machine needs to knmow about that information. 
-
-the goal is to 
-
 
 create a form and hand out 100 
 
@@ -199,24 +135,17 @@ we don't have the proceses in place.
 
 desperate for good data. desperate for accurate data.
 
-
 it gets over MANUAL ENTRY
-
-
-it's 
-
-
-
-
-
 
 the form chnges comr from teh edge inot the center
 
-t eh TOOL MUST BE PLASTIC
+the TOOL MUST BE PLASTIC
 
 
+ ==============
+ = VOLUNTEERS =
+ ==============
 
-VOLUTEERS
 taught to use a paper form
 they can speak 
 going to someones house
@@ -255,16 +184,13 @@ knocking on the doors
  nice easy drag and drop way to create a form. 
  a way to
 
-
 I can make a page that represents the idea and who we are designing it for. 
 
 Get some understanding of what we are talking about. 
 
 Then get people who have ideas for how this could be used in other ways, or feedback on what robert is sayin "robert is on crack."
 
-
 We have a jpeg converter, it us somethung that can be put together in a week. 
-
 
 How does the form builder widget work? 
 I would love to build something with xforms: but it is not the right way to build a form. 
@@ -273,9 +199,7 @@ we can't validate on a piece of paper
 
 we can ask about the water
 
-
 phase two: there is a whole social networ
-
 
 Social science research under the worst conditions imaginable. 
 
@@ -300,11 +224,9 @@ a social network where people bring the knowledge that they have about the right
 asks where you are
 asks what 
 
-
 community if practice.
 
 you can have an entire community around you that wouldn
-
 
 they can't see your data they see your METADATA. 
 
@@ -314,5 +236,14 @@ who would use this?
 - they have a motivations. 
 - STEALTH MOTIVE: if org a is working a province, and it is visible to everybody (vis)
 
+ ============
+ = timeline =
+ ============
 
+Revision 1
+ 3 coders
+ 
+to
 
+Revision 10
+ 10 coders?
