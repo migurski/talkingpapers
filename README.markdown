@@ -1,8 +1,8 @@
 #Talking Papers
 
-project home: http://talking-papers.org
-repository address: http://github.com/unthinkingly/talkingpapers
-project status: early development
+- project [home](http://talking-papers.org)
+- repository [address](http://github.com/unthinkingly/talkingpapers)
+- project *status*: early development
 
 
 #Relationship to walkingpapers
@@ -11,7 +11,7 @@ Talkingpapers is based on the "walkingpapers" project with Open Street Map. Here
 
 By contrast, the concept of talkingpapers: 
 
-Print surveys on "talkingpaper," get people to answer them, scan your results and automatically sync all of your results, even when you change the survery questions.
+Print surveys on "talkingpaper," get people to answer them, scan your results and automatically sync all of your results, even when you change the survey questions.
  
 Talkingpapers (unlike walkingpapers, and open street map) is not intended to be a general purpose resource: we are designing narrowly for use by a field assessment team with a logistics team, in a crisis.
 
@@ -23,7 +23,7 @@ Talkingpapers are currently in conceptual stage of development. The project is O
 
 #Definition
 
-Talkingpapers are forms that contain special encoded information about the form that you are editing. The paper, by virtue of it's barcodes, contains all of the information about the schma that it represents. It also uses a OCR friendly format known as "those annoying bubble blocks invented by the IRS." This combination of machine readable (ORC) and machine understandable (embedded schema) permits faster and more reliable data transfer. 
+Talkingpapers are forms that contain special encoded information about the form that you are editing. The paper, by virtue of its barcodes, contains all of the information about the schema that it represents. It also uses a OCR friendly format known as "those annoying bubble blocks invented by the IRS." This combination of machine readable (ORC) and machine understandable (embedded schema) permits faster and more reliable data transfer. 
 
 #Goals 
 
@@ -33,12 +33,12 @@ The talkingpapers are intended to 1.) reduce the amount of manual data entry tha
 
 We are designing for relief workers who are generating actionable logistics data in a crisis.
 
-In the UN humanitarian community (eg, nutrition cluster, health cluster, security cluster), organizations have different responsibilities and based on what they known from reports on the ground, so they will do an assessment -- a form. 
+In the UN humanitarian community (e.g., nutrition cluster, health cluster, security cluster), organizations have different responsibilities and based on what they known from reports on the ground, so they will do an assessment -- a form. 
 
-Logistics officer: needs to get things from point a to point be in the maximum way (balance of supplies, saftey.)
+Logistics officer: needs to get things from point a to point be in the maximum way (balance of supplies, safety.)
 - what are the supply needs. 
 - what kinds of routes are open
-- is sombody gonna kill us if we go to the well?
+- is somebody gonna kill us if we go to the well?
 
 The talkingpaper user is concerned with gathering "relief data"
 - critical infrastructure
@@ -49,7 +49,7 @@ These data points are gathered as quickly as possible in order to make actionabl
 
 We want to make the forms smarter, so they can make better decisions.
 
-#Information response in a diaster
+#Information response in a disaster
 There are limited avenues for gathering data in a crisis.
 
  - online
@@ -69,7 +69,7 @@ Talkingpapers seeks to add a new item to this list (actually to both lists) that
 
 
 
-#Scope of software developmet 
+#Scope of software development 
 
 Minimally we will need to develop two pieces of software: 
 
@@ -77,7 +77,7 @@ Minimally we will need to develop two pieces of software:
   This is the interface that you use to build a special form that has 2-D barcodes (encoding the schema and revision metadata), 1-D barcodes (encoding particular fields in the schema, associating them with OCR-friendly response areas).
   
 ###Talkingpaper Reader
-  This is the backend that stitches the answers together and correclty associates them with the correct version of the schema, making it possible to rapidly publish many verisons without fear of losing your work.
+  This is the backend that stitches the answers together and correctly associates them with the correct version of the schema, making it possible to rapidly publish many versions without fear of losing your work.
 
 
 #Technical Approach
@@ -104,7 +104,7 @@ A typical staff guiding the work of a relief logistics workers.
 - not just depending on their own routes ... perhaps working with CARE or Worldvision ... they share information - about where you can drive and where you can't.
 
 
-Core use scenario: In a jeep, after a disaster, perhaps a 2-person team driving aorund and researching conditions all day so they can tell where to bring in supplies.
+Core use scenario: In a jeep, after a disaster, perhaps a 2-person team driving around and researching conditions all day so they can tell where to bring in supplies.
 
 #Situations our users face
 
@@ -118,7 +118,7 @@ Core use scenario: In a jeep, after a disaster, perhaps a 2-person team driving 
 - Who is here?
 - Who is missing?
 - Where are people going to go
-- Eegistering everyone at a camp.
+- Registering everyone at a camp.
 - Designing living conditions for people in really shitty circumstances.
 - Aid agencies are starved for data for the response effort.
 - Victims are their own first responders.
@@ -143,7 +143,7 @@ In this way, a schema/model/ontology is represented in forms used to collect dat
 - where the worst and best is
 - tracking "haves" and "needs"
 
-#Example post-distaster timelines
+#Example post-disaster timelines
 
 ###unsuccessful relief logistics research timeline
 
@@ -152,16 +152,16 @@ A generic view of an unresponsive data cycle:
 DAY ONE: 
 Disaster occurs
 Relief organization investigates how to help, creates forms
-Admisters forms
+Administers forms
 Makes decisions based on information from forms
 DAY TW0
-Admisters forms
+Administers forms
 Makes decisions based on information from forms
 DAY THREE
-Admisters forms
+Administers forms
 Makes decisions based on information from forms
 
-(repeat to conclsion of relief effort)
+(repeat to conclusion of relief effort)
 
 
 ####successful relief logistics research timeline
@@ -169,7 +169,7 @@ Makes decisions based on information from forms
 In this case the forms get better and better from day, exposing the relief organization to information that was not relevant at the time of the initial investigation.
 
 DAY ONE
-Diaster occurs
+Disaster occurs
 Use the walkinpapers writer to create a form (xforms compatible importer presumably)
 Hand out 100 people to use the forms to gather data at the scene.
 Scan the forms in and synch the data. 
@@ -187,9 +187,9 @@ Sync data.
 
 (repeats to conclusion of relief effort)
 
-#Potential for grassroots distaster relief coordination
+#Potential for grassroots disaster relief coordination
 
-This data is traditionally ruled by large instutions, but there is a space with talkingpapers for smaller teams of diaster relief efforts (eg, NERTS in san francisco) to work together on collecting valuable survey disaster, because they can share their schemas with other groups that are using talkingpapers.
+This data is traditionally ruled by large institutions, but there is a space with talkingpapers for smaller teams of disaster relief efforts (e.g., NERTS in san francisco) to work together on collecting valuable survey disaster, because they can share their schemas with other groups that are using talkingpapers.
 
 
 #Ideas we hold dear
@@ -200,10 +200,10 @@ People in the field need to give their input on the success of the form, and the
 
 ###"Manual data entry kills data"
 
-Most of the time that the chance you are sitting in the tent scrubbing they data at night.  The Kirkpatrick law says that your likelyhood of correcting data in a tent all night on the scene of a crisis is direclty proportional to your seniority in a relief organization attenting the crisis. 
+Most of the time that the chance you are sitting in the tent scrubbing they data at night.  The Kirkpatrick law says that your likelihood of correcting data in a tent all night on the scene of a crisis is directly proportional to your seniority in a relief organization attending the crisis. 
 
 ###Paper is successful for good reasons, and can be improved
-We need paper. Not Piles and piles of it laying around gathering dust. And not the manual transription part. But we need paper-based data in situations where there is no other reasonable option. Data transition points in the crisis ecosystem RUIN data -- most prone to errors in transcriptions. But paper works well in the field; and a completely digital automation is not possible everywhere.
+We need paper. Not Piles and piles of it laying around gathering dust. And not the manual transcription part. But we need paper-based data in situations where there is no other reasonable option. Data transition points in the crisis ecosystem RUIN data -- most prone to errors in transcriptions. But paper works well in the field; and a completely digital automation is not possible everywhere.
 
 
 #TODOs 
@@ -212,10 +212,10 @@ We need paper. Not Piles and piles of it laying around gathering dust. And not t
 See the spec and the roadmap.
 
 ### Write more explainer material
-A page that represents the idea and who we are designing it for, to get some understanding of what we are talking about. Then get people who have ideas for how this could be used in other ways, or feedback on what robert is sayin, perhaps they will say "robert is on crack." We should find out. 
+A page that represents the idea and who we are designing it for, to get some understanding of what we are talking about. Then get people who have ideas for how this could be used in other ways, or feedback on what robert is sarin, perhaps they will say "robert is on crack." We should find out. 
 
-### Implementing a real data cycle with a paper-baed schema that changes rapidly
- We intened playtest the concept and refine it for production? Get it out in the open as soon as possible and get the data cycle working. Take input, record input (with OCR), scan the schema, edit the schema, print new forms, scan those, synch the schemas. 
+### Implementing a real data cycle with a paper-based schema that changes rapidly
+ We intend to "play-test" the concept and refine it for production -- get it out in the open as soon as possible and get the data cycle working. Take input, record input (with OCR), scan the schema, edit the schema, print new forms, scan those, synch the schemas. 
 
 #Longer term goals
 The current talkingpapers model is to *acknowledge that there also are many questions you didn't know to ask* thus requiring extremely flexible tools, for iteration in the field during crisis response.
