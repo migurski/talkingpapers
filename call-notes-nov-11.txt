@@ -1,0 +1,330 @@
+
+robert k 
+chris b
+
+"rasumussen can talk for 2 hours with a 5 second echo on skype"
+getting people to act in 
+
+UN humanitarian community, for a long time they have milling around 
+
+nutritioncluster healthcluster secutirycluster
+different organizations have different responsibilities and based on what they known from reports on the ground they will do an assessment -- a form -- 
+
+"the rapid 
+
+they are a hymourless crowd  
+
+UNAID UNOSHA during the invasion of IRAQ
+
+they built a version in Groove that took 20 seconds to updates
+
+THey try to do a collection balst "WVRYTHIGN WE WANT TO ASK" 
+
+critical infrastructure
+condition of the health standpoint
+water and sanitation
+all of the different seconds and 
+
+
+0---essentially looking at needs nda loking at it to proporitizedifferent types of need. 
+
+they use it to schedule followups. 
+
+
+all of these operational responses are driven by data. 
+
+All are driven by technology. 
+
+They are not asking 
+
+information is the oxygen of all of these opeations
+
+that's why mobile tools have exploded. 
+
+so information is treated with equal priority. 
+
+
+
+WHO IS IT FOR? 
+
+Logistics officer: needs to get things from point a to point be in the maximum way (balance of supplies, saftey.)
+- what are the supply needs. 
+- what kinds of routes are open
+- is sombody gonna kill us if we go to the well?
+
+
+field assessment team
+
+
+logistics team
+
+
+
+katrina was a total clusterfuck
+
+
+
+
+
+WE HAVE
+
+areial imagery 
+
+
+
+CONDITIONS TO NOTE
+
+comms is down: radio only
+
+
+
+RELIEF ORG
+
+
+Food for the Hungry
+10 international staff
+10 local staff
+3 guys at the warehouse
+3 people at the country office
+people ordering supplies
+coordinating between NGOs
+not just depending on their own routes ... perhaps working with CARE or Worldvision ... they share information about where you can drive and where you can't.
+
+2 person team driving aorund and assessing teh quality of roads for a day.
+
+Stuff and vehicles for stuff and roads for vehicles. its really tough when everything is broken and people are trying to kill you. 
+
+setiing up a camp. 
+
+aftershocks
+
+
+ ====================
+ = THE CAMP MANAGER =
+ ====================
+
+They need to setup ... 
+
+they have .... 
+
+they might encounter ...
+
+they use technology ... 
+
+diabetic people
+latrines
+tents
+rations
+# who is here
+# who is missing
+# where are people going to go
+
+
+in pakistan: does your land even exist? are you scared to go back? why? 
+
+
+
+all of the UN groups ask: 
+
+do you have pregnant women? do you have any minors. 
+
+Some of the data will vary a lot more than the others. 
+
+
+
+
+among relief worker staff
+
+
+
+
+
+# data collection tasks
+registering everyone
+
+
+
+
+designing for people in some circumstances
+
+
+people are creating forms
+
+
+Where are the metrics being taken from: potentially far away from the scene (increasingly close though). By a week after the event we can consider using the tool for much deeper studies. 
+
+
+What you typically find is that the information you need is constanly 
+
+
+"you are not changing any of my schemas."
+
+
+
+incident command system form
+SITREP
+
+Some of the questions have chang
+
+
+you are collecting something and the metadata is constantly evolving. 
+
+the populating has moved on from needing water to needing something much more. You need to be able to respong d in realtime.
+
+The forms are manually entered. carried over USB over land and then imported into the database. 
+
+most of the time that the chance you are sitting in the tent scrubbing they 
+
+THEY DONT TRUST ANYBODY ELSE TO GET IT RIGHT. 
+
+WE NEED PAPER NOT TO BE SOMETHING THAT JUST PILES UP AND IS SO prone to errors in transcriptions. 
+
+People who aren't even half fluent
+
+
+XML was created in 1996 we recognized it literslly contains everyting that a machine needs to knmow about that information. 
+
+the goal is to 
+
+
+create a form and hand out 100 
+
+20 come back, they get responses, PEOPLE ARE WORRIED ABOUT WATER so they change the form. 
+
+if you could design a form that was inherently 
+
+we could create a new kind of humanitarian data stream. not fancier. better. 
+
+raise paper to a more sophisticated instrument. 
+
+ah paper. the misery that I have seen in the field. It takes days to arrive. 
+
+you can see the pain ithat people have gone through. 
+
+try to prevalidate it. 
+
+so you get some errors
+ and you can't work with it. 
+ 
+we dont have the backend. 
+we don't have the proceses in place. 
+
+desperate for good data. desperate for accurate data.
+
+
+it gets over MANUAL ENTRY
+
+
+it's 
+
+
+
+
+
+
+the form chnges comr from teh edge inot the center
+
+t eh TOOL MUST BE PLASTIC
+
+
+
+VOLUTEERS
+taught to use a paper form
+they can speak 
+going to someones house
+knocking on the doors
+
+ ============================
+ = start form a real schema =
+ ============================
+ 
+ the implementation sucks but the sc
+
+"OCR friendly form"
+ urdu or arabic
+ 
+ viral when we need it. 
+ the paper is a channel for information. 
+ internet access is not reliable. (anywhere.)
+ sms
+ pda
+ pc
+ offline
+  police
+  radio
+  packet radio adapter on sms
+  HF radio and it sits on the shelf
+  you could be 
+  codan radios
+  9600 bos
+  asynchnouse
+  presistent retry protocol
+  "trickled for free"
+  online
+ 
+ "the web does not work in my country"
+ 
+ nice easy drag and drop way to create a form. 
+ a way to
+
+
+I can make a page that represents the idea and who we are designing it for. 
+
+Get some understanding of what we are talking about. 
+
+Then get people who have ideas for how this could be used in other ways, or feedback on what robert is sayin "robert is on crack."
+
+
+We have a jpeg converter, it us somethung that can be put together in a week. 
+
+
+How does the form builder widget work? 
+I would love to build something with xforms: but it is not the right way to build a form. 
+
+we can't validate on a piece of paper
+
+we can ask about the water
+
+
+phase two: there is a whole social networ
+
+
+Social science research under the worst conditions imaginable. 
+
+The forms get reinvented from scratch each time. 
+
+We were trying to figure out
+
+we got great data: 
+
+we get really good data by asking these questions: 
+
+people need a way to preserve sub-schemas independently. 
+
+What I imagine is ontologies. 
+
+child mortality, the best way it to ask these questinos in the right way and TAG it. 
+
+a social network where people bring the knowledge that they have about the right way to elicit information about a particular context. it's successful then you can ask for poinions about WHAT THE RIGHT WAY TO ASK ABOUNT SOMETHING IS> 
+
+"needs assessment " > flooding > 
+
+asks where you are
+asks what 
+
+
+community if practice.
+
+you can have an entire community around you that wouldn
+
+
+they can't see your data they see your METADATA. 
+
+who would use this? 
+
+- social goals to be met. 
+- they have a motivations. 
+- STEALTH MOTIVE: if org a is working a province, and it is visible to everybody (vis)
+
+
+
