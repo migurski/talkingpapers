@@ -1,1 +1,5 @@
 bin
+out.png
+*.sift
+*.pgm
+
