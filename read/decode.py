@@ -27,6 +27,37 @@ class Point:
         self.x = x
         self.y = y
 
+class Affine:
+    def __init__(self, a=1, b=0, c=0, d=0, e=1, f=0):
+        self.a = float(a)
+        self.b = float(b)
+        self.c = float(c)
+        self.d = float(d)
+        self.e = float(e)
+        self.f = float(f)
+
+    def __str__(self):
+        return str(((self.a, self.b, self.c), (self.d, self.e, self.f)))
+
+    def __repr__(self):
+        return str(self)
+
+    def project(self, x, y):
+        return self.a * x + self.b * y + self.c, self.d * x + self.e * y + self.f
+
+    def multiply(self, o):
+        return Affine(self.a * o.a + self.d * o.b, self.b * o.a + self.e * o.b, self.c * o.a + self.f * o.b + o.c,
+                      self.a * o.d + self.d * o.e, self.b * o.d + self.e * o.e, self.c * o.d + self.f * o.e + o.f)
+
+    def translate(self, dx, dy):
+        return self.multiply(Affine(1, 0, dx, 0, 1, dy))
+
+    def scale(self, sx, sy):
+        return self.multiply(Affine(sx, 0, 0, 0, sy, 0))
+
+    def rotate(self, theta):
+        return self.multiply(Affine(math.cos(theta), -math.sin(theta), 0, math.sin(theta), math.cos(theta), 0))
+
 class Marker:
     def __init__(self, basepath):
         data = open(basepath + '.sift', 'r')
@@ -72,12 +103,10 @@ def main(url, markers):
     
             marker.anchor = Point(x, y)
         
-        return 0
-        
-        # reading QR code
-        updateStepLocal(4, 10)
-        
         qrcode = extractCode(image, markers)
+        qrcode.save('qrcode.jpg', 'JPEG')
+        
+        return 0
 
         qrcode_name = 'qrcode.jpg'
         qrcode_bytes = StringIO.StringIO()
@@ -163,7 +192,7 @@ def main(url, markers):
 
     except:
         # an error
-        updateStepLocal(99, 90)
+        #updateStepLocal(99, 90)
 
         raise
 
@@ -495,43 +524,28 @@ def linearSolution(r1, s1, t1, r2, s2, t2, r3, s3, t3):
 def extractCode(image, markers):
     """
     """
-    # transformation from ideal space to printed image space.
-    # markers are positioned with Header at upper left, Hand at upper right, and CCBYSA at lower left
+    top = markers['GMDH02_00364']
+    bottom = markers['GMDH02_00647']
     
-    distance_across = math.hypot(markers['Hand'].anchor.x - markers['Header'].anchor.x, markers['Hand'].anchor.y - markers['Header'].anchor.y)
-    distance_down = math.hypot(markers['CCBYSA'].anchor.x - markers['Header'].anchor.x, markers['CCBYSA'].anchor.y - markers['Header'].anchor.y)
-    aspect = distance_across / distance_down
-    orientation = aspect > 1 and 'landscape' or 'portrait'
+    theta = math.asin(float(bottom.anchor.x - top.anchor.x) / float(bottom.anchor.y - top.anchor.y)) * -1
+    scale = math.hypot(bottom.anchor.x - top.anchor.x, bottom.anchor.y - top.anchor.y) / (756 - 36)
     
-    print >> sys.stderr, 'aspect', aspect, 'orientation', orientation
+    # a transformation matrix from print space (points) to scan space (pixels)
+    matrix = Affine().translate(-36, -36).scale(scale, scale).rotate(theta).translate(top.anchor.x, top.anchor.y)
     
-    right = orientation == 'portrait' and 540 or 720
-    bottom = orientation == 'portrait' and 720 or 540
-    
-    ax, bx, cx = linearSolution(0,      0, markers['Header'].anchor.x,
-                                right,  0, markers['Hand'].anchor.x,
-                                0, bottom, markers['CCBYSA'].anchor.x)
-    
-    ay, by, cy = linearSolution(0,      0, markers['Header'].anchor.y,
-                                right,  0, markers['Hand'].anchor.y,
-                                0, bottom, markers['CCBYSA'].anchor.y)
-    
-    # candidate location of the QR code on the printed image:
-    # top-left, top-right, bottom-left corner of QR code.
-    xys = [(right - 63, bottom - 63), (right, bottom - 63), (right - 63, bottom)]
-
-    corners = [Point(ax * x + bx * y + cx, ay * x + by * y + cy)
-               for (x, y) in xys]
+    top_left = matrix.project(504, 684)
+    top_right = matrix.project(576, 684)
+    bottom_left = matrix.project(504, 756)
 
     # projection from extracted QR code image space to source image space
     
-    ax, bx, cx = linearSolution(50,  50, corners[0].x,
-                                450, 50, corners[1].x,
-                                50, 450, corners[2].x)
+    ax, bx, cx = linearSolution(50,  50, top_left[0],
+                                450, 50, top_right[0],
+                                50, 450, bottom_left[0])
     
-    ay, by, cy = linearSolution(50,  50, corners[0].y,
-                                450, 50, corners[1].y,
-                                50, 450, corners[2].y)
+    ay, by, cy = linearSolution(50,  50, top_left[1],
+                                450, 50, top_right[1],
+                                50, 450, bottom_left[1])
 
     # extract the code part
     justcode = image.convert('RGBA').transform((500, 500), PIL.Image.AFFINE, (ax, bx, cx, ay, by, cy), PIL.Image.BICUBIC)
@@ -539,6 +553,8 @@ def extractCode(image, markers):
     # paste it to an output image
     qrcode = PIL.Image.new('RGB', justcode.size, (0xCC, 0xCC, 0xCC))
     qrcode.paste(justcode, (0, 0), justcode)
+    
+    return qrcode
     
     # raise contrast
     lut = [0x00] * 112 + [0xFF] * 144 # [0x00] * 112 + range(0x00, 0xFF, 8) + [0xFF] * 112
