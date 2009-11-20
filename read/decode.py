@@ -18,7 +18,6 @@ import xml.etree.ElementTree
 import PIL.Image
 import PIL.ImageFilter
 import matchup
-import ModestMaps
 
 class CodeReadException(Exception):
     pass
@@ -58,29 +57,11 @@ class Marker:
 
         self.anchor = Point(x, y)
 
-def main(url, markers, apibase, message_id, password, gdaldir):
+def main(url, markers):
     """
     """
-    url_pat = re.compile(r'^http://.+/scans/([^/]+)/(.*)$', re.I)
-    
-    if url_pat.match(url):
-        scan_id = url_pat.sub(r'\1', url)
-
-    else:
-        print >> sys.stderr, url, "doesn't match expected form"
-        return
-
-    # shorthand
-    updateStepLocal = lambda step_number, timeout: updateStep(apibase, password, scan_id, step_number, message_id, timeout)
-    
     try:
-        # sifting
-        updateStepLocal(2, 60)
-        
         image, features, scale = siftImage(url)
-        
-        # finding needles
-        updateStepLocal(3, 30)
         
         for (name, marker) in markers.items():
             print >> sys.stderr, name, '...',
@@ -90,6 +71,8 @@ def main(url, markers, apibase, message_id, password, gdaldir):
             print >> sys.stderr, '->', (x, y)
     
             marker.anchor = Point(x, y)
+        
+        return 0
         
         # reading QR code
         updateStepLocal(4, 10)
@@ -607,8 +590,8 @@ if __name__ == '__main__':
     url = sys.argv[1]
     markers = {}
     
-    for basename in ('Header', 'Hand', 'CCBYSA'):
-        basepath = os.path.dirname(os.path.realpath(__file__)) + '/corners/' + basename
+    for basename in ('GMDH02_00364', 'GMDH02_00647'):
+        basepath = os.path.dirname(os.path.realpath(__file__)) + '/' + basename
         markers[basename] = Marker(basepath)
     
     sys.exit(main(url, markers))
