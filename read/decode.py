@@ -106,6 +106,8 @@ def main(url, markers):
         qrcode = extractCode(image, markers)
         qrcode.save('qrcode.jpg', 'JPEG')
         
+        #readCode(qrcode)
+        
         return 0
 
         qrcode_name = 'qrcode.jpg'
@@ -527,7 +529,7 @@ def extractBox(image, markers, x, y, width, height, magnify):
     top = markers['GMDH02_00364']
     bottom = markers['GMDH02_00647']
     
-    theta = math.asin(float(bottom.anchor.x - top.anchor.x) / float(bottom.anchor.y - top.anchor.y)) * -1
+    theta = math.atan2(bottom.anchor.x - top.anchor.x, bottom.anchor.y - top.anchor.y) * -1
     scale = math.hypot(bottom.anchor.x - top.anchor.x, bottom.anchor.y - top.anchor.y) / (756 - 36)
     
     # a transformation matrix from print space (points) to scan space (pixels)
