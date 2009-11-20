@@ -521,7 +521,7 @@ def linearSolution(r1, s1, t1, r2, s2, t2, r3, s3, t3):
     
     return a, b, c
 
-def extractCode(image, markers):
+def extractBox(image, markers, x, y, width, height, magnify):
     """
     """
     top = markers['GMDH02_00364']
@@ -533,22 +533,29 @@ def extractCode(image, markers):
     # a transformation matrix from print space (points) to scan space (pixels)
     matrix = Affine().translate(-36, -36).scale(scale, scale).rotate(theta).translate(top.anchor.x, top.anchor.y)
     
-    top_left = matrix.project(504, 684)
-    top_right = matrix.project(576, 684)
-    bottom_left = matrix.project(504, 756)
+    top_left = matrix.project(x, y)
+    top_right = matrix.project(x + width, y)
+    bottom_left = matrix.project(x, y + height)
 
     # projection from extracted QR code image space to source image space
     
-    ax, bx, cx = linearSolution(50,  50, top_left[0],
-                                450, 50, top_right[0],
-                                50, 450, bottom_left[0])
+    w, h = width * magnify, height * magnify
     
-    ay, by, cy = linearSolution(50,  50, top_left[1],
-                                450, 50, top_right[1],
-                                50, 450, bottom_left[1])
+    ax, bx, cx = linearSolution(0, 0, top_left[0],
+                                w, 0, top_right[0],
+                                0, h, bottom_left[0])
+    
+    ay, by, cy = linearSolution(0, 0, top_left[1],
+                                w, 0, top_right[1],
+                                0, h, bottom_left[1])
 
+    return image.convert('RGBA').transform((w, h), PIL.Image.AFFINE, (ax, bx, cx, ay, by, cy), PIL.Image.BICUBIC)
+
+def extractCode(image, markers):
+    """
+    """
     # extract the code part
-    justcode = image.convert('RGBA').transform((500, 500), PIL.Image.AFFINE, (ax, bx, cx, ay, by, cy), PIL.Image.BICUBIC)
+    justcode = extractBox(image, markers, 504-18, 684-18, 108, 108, 5)
     
     # paste it to an output image
     qrcode = PIL.Image.new('RGB', justcode.size, (0xCC, 0xCC, 0xCC))
