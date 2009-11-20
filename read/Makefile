@@ -8,13 +8,13 @@ GMDH02_00647.sift: bin GMDH02_00647.pgm
 	bin/sift --peak-thresh=8 -o GMDH02_00647.sift GMDH02_00647.pgm
 
 GMDH02_00647.pgm: GMDH02_00647.png
-	convert -geometry 1000x1000 GMDH02_00647.png GMDH02_00647.pgm
+	convert GMDH02_00647.png GMDH02_00647.pgm
 
 GMDH02_00364.sift: bin GMDH02_00364.pgm
 	bin/sift --peak-thresh=8 -o GMDH02_00364.sift GMDH02_00364.pgm
 
 GMDH02_00364.pgm: GMDH02_00364.png
-	convert -geometry 1000x1000 GMDH02_00364.png GMDH02_00364.pgm
+	convert GMDH02_00364.png GMDH02_00364.pgm
 
 layout.sift: bin layout.pgm
 	bin/sift --peak-thresh=8 -o layout.sift layout.pgm
