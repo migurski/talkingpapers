@@ -3,8 +3,10 @@ import sys
 import re
 import math
 import time
+import json
 import glob
 import array
+import pprint
 import urllib
 import os.path
 import httplib
@@ -88,7 +90,7 @@ class Marker:
 
         self.anchor = Point(x, y)
 
-def main(url, markers):
+def main(url, markers, info_url):
     """
     """
     try:
@@ -107,6 +109,14 @@ def main(url, markers):
         qrcode.save('qrcode.jpg', 'JPEG')
         
         #readCode(qrcode)
+        
+        info = json.load(urllib.urlopen(info_url))
+        
+        for field in info:
+            x, y = field['bbox'][0] - 6, field['bbox'][1] - 6
+            w, h = field['bbox'][2] + 6 - x, field['bbox'][3] + 6 - y
+            extractBox(image, markers, x, y, w, h, 1).save('%(name)s-small.jpg' % field, 'JPEG')
+            extractBox(image, markers, x, y, w, h, 3).save('%(name)s-large.jpg' % field, 'JPEG')
         
         return 0
 
@@ -612,11 +622,12 @@ def readCode(image):
         raise CodeReadException('Attempt to read QR code failed')
 
 if __name__ == '__main__':
-    url = sys.argv[1]
+    scan_url = sys.argv[1]
+    info_url = sys.argv[2]
     markers = {}
     
     for basename in ('GMDH02_00364', 'GMDH02_00647'):
         basepath = os.path.dirname(os.path.realpath(__file__)) + '/' + basename
         markers[basename] = Marker(basepath)
     
-    sys.exit(main(url, markers))
+    sys.exit(main(scan_url, markers, info_url))
