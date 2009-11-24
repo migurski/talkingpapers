@@ -2,7 +2,7 @@
 require 'rubygems'
 require 'sinatra'
 
-get '/stylesheet.css' do
+get '/stylesheets/screen.css' do
   header 'Content-Type' => 'text/css; charset=utf-8'
    sass :stylesheet, :sass_options => {:style => :expanded } # overridden
 end
