@@ -24,6 +24,8 @@ class Point:
         self.y = y
 
 class Affine:
+    """ A bare minimum 2-D affince transformation.
+    """
     def __init__(self, a=1, b=0, c=0, d=0, e=1, f=0):
         self.a = float(a)
         self.b = float(b)
@@ -55,6 +57,8 @@ class Affine:
         return self.multiply(Affine(math.cos(theta), -math.sin(theta), 0, math.sin(theta), math.cos(theta), 0))
 
 class Marker:
+    """ Mark image that can be found using SIFT.
+    """
     def __init__(self, basepath):
         data = open(basepath + '.sift', 'r')
         self.features = [matchup.row2feature(row) for row in data]
@@ -63,7 +67,7 @@ class Marker:
         self.anchor = Point(*[int(c) for c in point.read().split()])
 
     def locateInFeatures(self, features):
-        """
+        """ Modify self.anchor based on location in features array.
         """
         start = time.time()
         
@@ -126,7 +130,9 @@ def main(url, markers):
         raise
 
 def siftImage(url):
-    """
+    """ Get an image from a URL and return a max 1000x1000 PIL instance,
+        list of SIFT features, and scale coefficient from the original
+        to the scaled PIL image.
     """
     print >> sys.stderr, 'download...',
     
@@ -191,7 +197,9 @@ def linearSolution(r1, s1, t1, r2, s2, t2, r3, s3, t3):
     return a, b, c
 
 def extractBox(image, markers, x, y, width, height, magnify):
-    """
+    """ Given an image, two markers, a bounding box (x, y, width, height) and a
+        desired output magnification based on 72 dpi (e.g. 2.0 = 144dpi, sorry),
+        return an image for that area based on marker placement gymnastics.
     """
     top = markers['GMDH02_00364']
     bottom = markers['GMDH02_00647']
@@ -221,7 +229,7 @@ def extractBox(image, markers, x, y, width, height, magnify):
     return image.convert('RGBA').transform((w, h), PIL.Image.AFFINE, (ax, bx, cx, ay, by, cy), PIL.Image.BICUBIC)
 
 def extractCode(image, markers):
-    """
+    """ Use extractBox() to find the QR code.
     """
     # extract the code part
     justcode = extractBox(image, markers, 504-18, 684-18, 108, 108, 5)
@@ -239,7 +247,9 @@ def extractCode(image, markers):
     return qrcode
 
 def readCode(image):
-    """
+    """ Given a PIL image of an assumed QR code, shell out to java and retrieve
+        the decoded JSON in the code URL. Fails if no code is found, or it's not
+        a URL, or the URL doesn't contain JSON.
     """
     decode = 'java', '-classpath', ':'.join(glob.glob('lib/*.jar')), 'qrdecode'
     decode = subprocess.Popen(decode, stdin=subprocess.PIPE, stdout=subprocess.PIPE)

@@ -6,23 +6,34 @@
     require_once 'HTTP/Request.php';
     require_once 'Services/JSON.php';
 
+   /**
+    * Given an FPDF instance and a print URL, adds boilerplate Talking Papers
+    * graphic elements: title, Gerd Arntz registration marks, QR code.
+    */
     function annotate_pdf(&$pdf, $print_url)
     {
+        // typewriter, upper-left corner
         $icon_filename = realpath(dirname(__FILE__).'/../read/GMDH02_00364.png');
         $pdf->image($icon_filename, 0, 0, 144, 144);
         
+        // little fella, lower-left corner
         $icon_filename = realpath(dirname(__FILE__).'/../read/GMDH02_00647.png');
         $pdf->image($icon_filename, 0, 648, 122, 144);
         
+        // "Talking Papers", upper-left corner
         $pdf->setFont('Helvetica', 'B', 36);
         $pdf->text(114, 82, 'Talking Papers');
         
         $size = 72;
         $pad = 8;
         
+        /*
+        // white shield behind QR code ... this probably made more sense in Walking Papers
         $pdf->setFillColor(0xFF);
         $pdf->rect($pdf->w - 36 - $size - $pad, $pdf->h - 36 - $size - $pad, $size + $pad * 2, $size + $pad * 2, 'F');
+        */
 
+        // QR code, lower-right corner, comes from Google
         $req = new HTTP_Request('http://chart.apis.google.com/chart?chs=264x264&cht=qr&chld=Q|0');
         $req->addQueryString('chl', $print_url);
         $res = $req->sendRequest();
@@ -30,6 +41,7 @@
         if(PEAR::isError($res))
             die_with_code(500, "{$res->message}\n{$q}\n");
         
+        // save it locally, drop it in, toss the original
         $code_img = imagecreatefromstring($req->getResponseBody());
         $code_filename = tempnam(TMP_DIR, 'composed-code-');
         imagepng($code_img, $code_filename);
@@ -55,6 +67,10 @@
     
     $y = 144;
     
+   /**
+    * Given an FPDF instance, bounding box (left, top, right, bottom),
+    * and optional text to go underneath in small type, draw a box.
+    */
     function draw_area_box(&$pdf, $x, $y, $r, $b, $subtext=false)
     {
         $w = $r - $x;
@@ -78,6 +94,10 @@
         return array($x, $y, $r, $b);
     }
     
+   /**
+    * Given an FPDF instance, corner (x, y), number of characters and optional text
+    * to go underneath in small type, draw a box and add tick marks for each letter.
+    */
     function draw_text_box(&$pdf, $x, $y, $size, $subtext=false)
     {
         // width, height, right, bottom
@@ -113,17 +133,20 @@
         switch($field['type'])
         {
             case 'text':
+                // text box with tick marks
                 $size = $field['size'] ? $field['size'] : 20;
                 $bbox = draw_text_box($pdf, $x, $y, $size);
                 $fields[$f]['bbox'] = $bbox;
                 break;
 
             case 'textarea':
+                // big free-text box
                 $bbox = draw_area_box(&$pdf, $x, $y, $x + 540, $y + 72);
                 $fields[$f]['bbox'] = $bbox;
                 break;
 
             case 'date':
+                // three text boxes with room for date in "YYYY MM DD" form
                 $pdf->setFont('Helvetica', 'I', 6);
                 $bbox1 = draw_text_box($pdf, $x, $y, 4, 'year');
                 $bbox2 = draw_text_box($pdf, $x + 78, $y, 2, 'month');
@@ -141,6 +164,7 @@
     
     $pdf->output('out.pdf', 'F');
     
+    // blat out some JSON information about the form
     $json = new Services_JSON(SERVICES_JSON_LOOSE_TYPE);
     echo $json->encode($fields)."\n";
 
