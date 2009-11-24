@@ -105,22 +105,25 @@ def main(url, markers):
         info = readCode(qrcode)
         
         for field in info:
+            field['scan'] = '%(name)s-small.jpg' % field, '%(name)s-large.jpg' % field
             x, y = field['bbox'][0] - 6, field['bbox'][1] - 6
             w, h = field['bbox'][2] + 6 - x, field['bbox'][3] + 6 - y
-            extractBox(image, markers, x, y, w, h, 1).save('%(name)s-small.jpg' % field, 'JPEG')
-            extractBox(image, markers, x, y, w, h, 3).save('%(name)s-large.jpg' % field, 'JPEG')
+            extractBox(image, markers, x, y, w, h, 1).save(field['scan'][0], 'JPEG')
+            extractBox(image, markers, x, y, w, h, 3).save(field['scan'][1], 'JPEG')
+    
+        print >> sys.stdout, json.dumps(info, indent=2)
+        
+        return 0
 
     except CodeReadException:
-        print 'Failed QR code, maybe will try again?'
-        updateStepLocal(98, 10)
+        print >> sys.stderr, 'Failed QR code, maybe will try again?'
+        return 1
     
     except KeyboardInterrupt:
         raise
 
     except:
         raise
-
-    return 0
 
 def siftImage(url):
     """
@@ -246,7 +249,7 @@ def readCode(image):
     decode.wait()
     
     decoded = decode.stdout.read().strip()
-    print decoded
+    print >> sys.stderr, decoded
     
     if decoded.startswith('http://'):
         return json.load(urllib.urlopen(decoded))
