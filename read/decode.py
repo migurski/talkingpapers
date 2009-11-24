@@ -24,7 +24,7 @@ class Point:
         self.y = y
 
 class Affine:
-    """ A bare minimum 2-D affince transformation.
+    """ A bare minimum 2-D affine transformation.
     """
     def __init__(self, a=1, b=0, c=0, d=0, e=1, f=0):
         self.a = float(a)
