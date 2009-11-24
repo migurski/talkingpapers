@@ -90,7 +90,7 @@ class Marker:
 
         self.anchor = Point(x, y)
 
-def main(url, markers, info_url):
+def main(url, markers):
     """
     """
     try:
@@ -108,9 +108,7 @@ def main(url, markers, info_url):
         qrcode = extractCode(image, markers)
         qrcode.save('qrcode.jpg', 'JPEG')
         
-        #readCode(qrcode)
-        
-        info = json.load(urllib.urlopen(info_url))
+        info = readCode(qrcode)
         
         for field in info:
             x, y = field['bbox'][0] - 6, field['bbox'][1] - 6
@@ -595,39 +593,17 @@ def readCode(image):
     print decoded
     
     if decoded.startswith('http://'):
-    
-        html = xml.etree.ElementTree.parse(urllib.urlopen(decoded))
-        
-        print_id, north, west, south, east = None, None, None, None, None
-        
-        for span in html.findall('body/span'):
-            if span.get('id') == 'print-info':
-                for subspan in span.findall('span'):
-                    if subspan.get('class') == 'print':
-                        print_id = subspan.text
-                    elif subspan.get('class') == 'north':
-                        north = float(subspan.text)
-                    elif subspan.get('class') == 'south':
-                        south = float(subspan.text)
-                    elif subspan.get('class') == 'east':
-                        east = float(subspan.text)
-                    elif subspan.get('class') == 'west':
-                        west = float(subspan.text)
-    
-        return print_id, north, west, south, east
+        return json.load(urllib.urlopen(decoded))
 
     else:
-        #image.show()
-
         raise CodeReadException('Attempt to read QR code failed')
 
 if __name__ == '__main__':
     scan_url = sys.argv[1]
-    info_url = sys.argv[2]
     markers = {}
     
     for basename in ('GMDH02_00364', 'GMDH02_00647'):
         basepath = os.path.dirname(os.path.realpath(__file__)) + '/' + basename
         markers[basename] = Marker(basepath)
     
-    sys.exit(main(scan_url, markers, info_url))
+    sys.exit(main(scan_url, markers))
