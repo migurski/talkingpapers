@@ -41,7 +41,7 @@
     $pdf = new FPDF('P', 'pt', 'letter');
     $pdf->addPage();
     
-    annotate_pdf($pdf, 'http://github.com/migurski/talkingpapers/network');
+    annotate_pdf($pdf, 'http://things.teczno.com/talking-papers/2009-11-23/form.json');
 
    /**
     * Form fields, loosely based on HTML5 input element spec.,
