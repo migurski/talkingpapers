@@ -1,0 +1,2 @@
+*.DS_Store
+sinatra/views/compass/src/.sass-cache/*

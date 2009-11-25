@@ -1,0 +1,141 @@
+!!! XML
+!!! Strict
+%html
+  %head
+    %link{:href => "/stylesheets/screen.css", :rel => "stylesheet", :type => "text/css", :media => "screen"}
+    %link{:href => "/stylesheets/print.css", :rel => "stylesheet", :type => "text/css", :media => "print"}
+    %title Enter Information About a Missing or Found Person
+  %body
+    #container
+      #header
+        %img{:src => "http://chart.apis.google.com/chart?cht=qr&chl=http://talking-papers.org/path/to/form&chs=100x100"}
+        %h1 Enter Information About a Missing or Found Person
+
+      %form{ :action => "/post", :method => "post"}
+        .person
+          %h2
+            Missing or Found Person
+          #person.input
+            #name
+              %h3 Name:
+              .hint
+                Name of the missing or found person.
+              %label{:for => "first_name" }
+                First Name:
+              %input#first_name{ :name => "first_name"}
+            
+              %label{ :for => "last_name" }
+                Last Name:
+              %input#last_name{ :name => "last_name"}
+          
+            #address
+              %label
+                %h3 Home Address:
+              .hint
+                Address where the missing or found person resided.
+              %label{ :for => "home_street" }
+                Street:
+              %input#home_street{ :name => "home_street"}
+              %label{ :for => "home_neighborhood" }
+                Neighborhood:
+              %input#home_neighborhood{ :name => "home_neighborhood"}
+            
+              %label{ :for => "home_city" }
+                City:
+              %input#home_city{ :name => "home_city"}
+              %label{ :for => "home_state" }
+                State:
+              %input#home_state{ :name => "home_state", :size => "2" }
+              %label{ :for => "home_zip" }
+                Zip:
+                %input#home_zip{ :name => "home_zip", :size => "5" }
+            #other
+              %label{ :for => "other" }
+                %h3 Description:
+              .hint
+                Describe the missing or found person.
+              %textarea#other{ :name => "other" }
+            #photo
+              Photo:
+              %label{ :for => "photo_url" }
+                URL:
+              %input#photo_url{ :name => "photo_url"}
+
+            #source
+              %label
+                %h3 Originally Posted At:
+              .hint
+                If you are copying this record from elsewhere, when and where was it originally posted?
+              %label{ :for => "source_url" }
+                Post URL:
+              %input#source_url{ :name => "source_url"}
+            
+              %label{ :for => "source_date" }
+                Post Date:
+              %input#source_date{ :name => "source_date", :size => "10", :value => "YYYY-MM-DD" }
+            
+              %label{ :for => "source_name" }
+                Site Name:
+              %input#source_name{ :name => "source_name"}
+
+            #author
+              .mandatory
+                %label
+                  %h3 Originally Posted By:
+                .hint
+                  Author of the original post,
+                  or you, if you are not copying an original post.
+            
+                %label{ :for => "author_name" }
+                  Name:
+                %input#author_name{ :name => "author_name"}
+              
+                %label{ :for => "author_phone" }
+                  Phone:
+                %input#author_phone{ :name => "author_phone"}
+              
+                %label{ :for => "author_email" }
+                  E-mail:
+                %input#author_email{ :name => "author_email"}
+              
+              #note.list
+                .note.input{ :cellspacing => "0", :cellpadding => "0" }
+                  .text
+                    %label{ :for => "text" }
+                      %h3 Message:
+                    .hint
+                      Leave a short message for this person or for others who are looking for this person.
+            
+                      %textarea#text{ :name => "text", :rows => "5", :cols => "25" }
+            
+                  .location
+                    %label{ :for => "last_known_location" }
+                      Last Known Location:
+                    %input#last_known_location{ :name => "last_known_location"}
+            
+                  .found
+                    %label{ :for => "found" }
+                      Person Found?
+            
+                    %select#found{ :name => "found" }
+                      %option{ :selected => "", :value => "0" }
+                        no
+                      %option{ :value => "1" }
+                        yes
+            
+                  .contact
+                    %label
+                      %h3 Contacting this person
+                    %label{ :for => "phone_of_found_person" }
+                      Phone:
+                    %input#phone_of_found_person{ :name => "phone_of_found_person"}
+            
+                    %label{ :for => "email_of_found_person" }
+                      E-mail:
+                    %input#email_of_found_person{ :name => "email_of_found_person"}
+
+                  .hint
+                    If any of the status fields above are set, make sure the message includes an explanation of how the person was seen or contacted.
+            
+      .submit{ :colspan => "2" }
+        %input{ :type => "submit", :value => "Add a record about this person" }

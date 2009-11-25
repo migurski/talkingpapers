@@ -1,0 +1,99 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
+
+*:focus { outline: 0; }
+
+body { line-height: 1em; color: black; background: #fff; }
+
+ol, ul { list-style: none; }
+
+/* tables still need 'cellspacing="0"' in the markup */
+table { border-collapse: separate; border-spacing: 0; vertical-align: middle; }
+
+caption, th, td { text-align: left; font-weight: normal; vertical-align: middle; }
+
+q, blockquote { quotes: "" ""; }
+q:before, q:after, blockquote:before, blockquote:after { content: ""; }
+
+img a { border: none; }
+
+body { font-family: Helvetica, Arial, sans-serif; color: #444444; }
+
+/* @group links */
+:focus { outline: 1px dotted #777777; color: #006666; }
+
+a:link { color: #009999; }
+a:visited { color: #990099; }
+a:focus, a:hover, a:active { color: #006666; text-decoration: none; }
+
+/* @end */
+/* @group headers */
+h1, h2, h3, h4, h5, h6 { color: #333333; font-weight: bold; }
+
+h1, h2, h3 { font-family: Baskerville, Palatino, serif; }
+
+h1 { font-size: 1.5em; }
+
+/* @end */
+/* @group forms */
+form *:focus { outline: none; }
+
+fieldset { margin: 1.5em 0; }
+
+legend { font-weight: bold; font-variant: small-caps; }
+
+label { display: block; margin-top: 1.5em; }
+
+legend + label { margin-top: 0; }
+
+textarea, input[type="text"] { color: #777777; /* Mozilla (FireFox, Camino) */ -moz-box-sizing: border-box; /* Webkit (Safari, Chrome) */ -webkit-box-sizing: border-box; /* IE (8) */ -ms-box-sizing: border-box; /* CSS3 */ box-sizing: border-box; width: 100%; }
+
+/* @end */
+/* @group tables */
+/* tables still need 'cellspacing="0"' in the markup */
+table { width: 100%; border: 0.063em solid #aaaaaa; border-left: none; border-right: none; padding: 0.438em 0; margin: 0.5em 0; }
+
+tbody { color: #777777; }
+
+th { font-weight: bold; }
+
+/* @end */
+/* @group block tags */
+p { margin: 1.5em 0; }
+
+ol { list-style: decimal; margin: 0 1.5em 1.5em 1.5em; }
+
+ul { list-style: disc; margin: 0 1.5em 1.5em 1.5em; }
+
+blockquote { margin: 1.5em; color: #777777; }
+
+/* @end */
+/* @group inline tags */
+cite { font-style: italic; color: #777777; }
+
+em { font-style: italic; }
+
+strong { font-weight: bold; }
+
+ins { text-decoration: underline; }
+
+del { text-decoration: line-through; }
+
+q { font-style: italic; }
+q em { font-style: normal; }
+
+/* @end */
+/* @group replaced tags */
+img { vertical-align: bottom; }
+
+/* @end */
+
+body { text-align: center; font-size: 100%; line-height: 1.5em; }
+body #container { overflow: hidden; display: inline-block; text-align: left; margin-left: auto; margin-right: auto; width: 61em; max-width: 100%; }
+body #container { display: block; }
+body #container #header { padding-top: 1em; padding-bottom: 1em; margin-top: 1em; margin-bottom: 1em; }
+body #container #header img { float: left; }
+body #container #header h1 { clear: both; margin-right: 1.639%; margin-left: 1.639%; float: left; clear: none; padding-top: 1em; padding-bottom: 1em; margin-top: 1em; margin-bottom: 1em; }
+body #container form { clear: both; margin-right: 1.639%; margin-left: 1.639%; padding-top: 1em; padding-bottom: 1em; margin-top: 1em; margin-bottom: 1em; }
+body #container form label, body #container form textarea { background: url("http://chart.apis.google.com/chart?cht=qr&chl=http://talking-papers.org/path/to/form&chs=50x50") top left no-repeat; width: 15.254%; display: inline; float: left; margin-right: 1.695%; padding-left: 8.197%; height: 3em; max-width: 250px; }
+body #container form input { border: 2px solid #000; background: url('/images/grid.png'); height: 2.0em; width: 250px; width: 66.102%; display: inline; float: left; margin-right: 1.695%; display: inline; float: right; margin-right: 0; /* ugly hacks for IE6-7 */ #margin-right: -1%; /* end ugly hacks */ }
+body #container form div { clear: both; border-top: 1px solid #000; }

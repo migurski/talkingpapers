@@ -1,0 +1,49 @@
+@import compass/reset.sass
+@import base.sass
+
+//width of a single square in the grid
+!form_grid_unit = 25px
+!large_input = !form_grid_unit * 10
+!medium_input = !form_grid_unit * 5
+!small_input = !form_grid_unit * 3
+
+=vertical_space
+  :padding-top 1em
+  :padding-bottom 1em
+  :margin-top 1em
+  :margin-bottom 1em
+
+
+body
+  +susy
+  #container
+    +container
+    #header
+      +vertical_space
+      img
+        :float left
+      h1
+        +full
+        :float left
+        :clear none
+        +vertical_space
+    form
+      +full
+      +vertical_space
+      label, textarea
+        :background url("http://chart.apis.google.com/chart?cht=qr&chl=http://talking-papers.org/path/to/form&chs=50x50") top left no-repeat
+        +columns(2,12)
+        +alpha(12)
+        +pad(1,0)
+        :height 3em
+        :max-width= !large_input
+      input
+        :border 2px solid #000
+        :background url('/images/grid.png')
+        :height 2.0em
+        :width= !large_input
+        +columns(8,12)
+        +omega(12)
+      div
+        :clear both
+        :border-top 1px solid #000
